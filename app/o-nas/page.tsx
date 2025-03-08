@@ -27,7 +27,16 @@ export default async function ProjectsPage() {
         new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
         new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
     );
-
+// Vitajte v mieste, kde sa krása stretáva s profesionalitou a starostlivosťou."
+// V srdci Nitri sme vytvorili oázu krásy a relaxácie, kde sa čas spomalí a vy sa stanete stredobodom našej pozornosti."
+// Veríme, že každá tvár rozpráva príbeh, a my sme tu, aby sme zvýraznili jeho najkrajšie kapitoly."
+// Naším poslaním je nielen skrášľovať, ale aj inšpirovať a dodávať sebavedomie."
+// Za každou premenou stojí tím profesionálov, ktorí svoju prácu milujú rovnako ako výsledky, ktoré prinášajú."
+// Náš tím spája vášeň pre krásu s neustálym vzdelávaním sa v najnovších trendoch a technikách."
+// Od jemnej dennej starostlivosti až po dramatické večerné premeny – naše služby sú šité na mieru vašim potrebám a túžbam."
+// V našom salóne nájdete harmóniu medzi tradičnými postupmi a inovatívnymi technológiami pre dosiahnutie dokonalých výsledkov."
+// Každá návšteva u nás je osobným zážitkom, kde vaše priania a potreby sú našou prioritou."
+// Veríme, že skutočná krása je o tom, ako sa cítite – preto je naším cieľom, aby ste od nás odchádzali nielen krajšie, ale aj šťastnejšie."
   return (
     <div className="relative pb-16">
       <Navigation />
@@ -37,14 +46,14 @@ export default async function ProjectsPage() {
             O nás
           </h2>
           <p className="mt-4 text-zinc-400">
-            Some of the projects are from work and some are on my own time.
-          </p>
+          Náš príbeh sa začal s jednoduchou víziou – vytvoriť priestor, kde každá žena objaví svoju jedinečnú krásu.
+          </p> 
         </div>
         <div className="w-full h-px bg-zinc-800" />
 
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
           <Card>
-            <Link href={`/projects/${featured.slug}`}>
+            <Link href={`/o-nas/${featured.slug}`}>
               <article className="relative w-full h-full p-4 md:p-8">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-xs text-zinc-100">

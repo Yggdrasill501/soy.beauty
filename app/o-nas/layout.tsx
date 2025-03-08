@@ -1,4 +1,4 @@
-export default function ProjectsLayout({
+export default function ONasLayout({
 	children,
 }: { children: React.ReactNode }) {
 	return (
