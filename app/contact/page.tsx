@@ -1,27 +1,21 @@
 "use client";
-import { Github, Mail, Twitter } from "lucide-react";
+import { Github, Mail, Instagram } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 
 const socials = [
 	{
-		icon: <Twitter size={20} />,
-		href: "https://twitter.com/soy_beauty",
-		label: "Twitter",
-		handle: "@soy_beauty",
+		icon: <Instagram size={20} />,
+		href: "https://www.instagram.com/soybeauty.sk?igsh=N25iNzhrOHVuNzVo",
+		label: "Instagram",
+		handle: "@soybeauty.sky",
 	},
 	{
 		icon: <Mail size={20} />,
-		href: "mailto:dev@soy.beauty",
+		href: "soybeautysk@gmail.com",
 		label: "Email",
-		handle: "dev@soy.beauty",
-	},
-	{
-		icon: <Github size={20} />,
-		href: "https://github.com/soy-beauty",
-		label: "Github",
-		handle: "soy-beauty",
+		handle: "soybeautysk@gmail.com",
 	},
 ];
 
