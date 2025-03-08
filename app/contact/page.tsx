@@ -1,5 +1,5 @@
 "use client";
-import { Github, Mail, Instagram } from "lucide-react";
+import { Mail, Instagram, Map } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
@@ -17,6 +17,13 @@ const socials = [
 		label: "Email",
 		handle: "soybeautysk@gmail.com",
 	},
+	{
+		// TODO: Add location when on google maps
+		icon: <Map size={20} />,
+		href: "https://www.google.com/maps",
+		label: "Location",
+		handle: "soy.beauty",
+	}
 ];
 
 export default function Example() {
