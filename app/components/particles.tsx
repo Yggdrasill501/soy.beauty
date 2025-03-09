@@ -98,12 +98,17 @@ export default function Particles({
 		const y = Math.floor(Math.random() * canvasSize.current.h);
 		const translateX = 0;
 		const translateY = 0;
-		const size = Math.floor(Math.random() * 2) + 0.1;
+		// Create a mix of tiny and larger stars
+		const size = Math.random() > 0.8 ? 
+			Math.random() * 2 + 1 : // Larger stars (20% chance)
+			Math.random() * 0.8 + 0.3; // Smaller stars (80% chance)
 		const alpha = 0;
-		const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
-		const dx = (Math.random() - 0.5) * 0.2;
-		const dy = (Math.random() - 0.5) * 0.2;
-		const magnetism = 0.1 + Math.random() * 4;
+		// Create more variance in brightness for twinkling effect
+		const targetAlpha = parseFloat((Math.random() * 0.8 + 0.2).toFixed(1));
+		// Slower movement for stars
+		const dx = (Math.random() - 0.5) * 0.05;
+		const dy = (Math.random() - 0.5) * 0.05;
+		const magnetism = 0.1 + Math.random() * 2;
 		return {
 			x,
 			y,
@@ -122,9 +127,50 @@ export default function Particles({
 		if (context.current) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
 			context.current.translate(translateX, translateY);
+			
+			// Draw a more defined star shape
+			const spikes = 4 + Math.floor(Math.random() * 2); // 4 or 5 pointed stars for variety
+			const outerRadius = size * 1.2; // Slightly larger outer radius
+			const innerRadius = size / 3.5; // Smaller inner radius for more pronounced points
+			let rot = Math.PI / 2 * 3 + (Math.random() * 0.5); // Slight rotation variance
+			let step = Math.PI / spikes;
+			
 			context.current.beginPath();
-			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+			context.current.moveTo(x, y - outerRadius);
+			
+			for (let i = 0; i < spikes; i++) {
+				context.current.lineTo(
+					x + Math.cos(rot) * outerRadius,
+					y + Math.sin(rot) * outerRadius
+				);
+				rot += step;
+				
+				context.current.lineTo(
+					x + Math.cos(rot) * innerRadius,
+					y + Math.sin(rot) * innerRadius
+				);
+				rot += step;
+			}
+			
+			context.current.lineTo(x, y - outerRadius);
+			context.current.closePath();
+			
+			// Enhanced glow effect with brighter center
+			const gradient = context.current.createRadialGradient(
+				x, y, 0, 
+				x, y, outerRadius * 2
+			);
+			
+			// Random color tint for some stars
+			const hue = Math.random() > 0.7 ? 
+				(Math.random() > 0.5 ? '255, 240, 220' : '220, 240, 255') : 
+				'255, 255, 255';
+			
+			gradient.addColorStop(0, `rgba(${hue}, ${alpha * 1.2})`);
+			gradient.addColorStop(0.4, `rgba(${hue}, ${alpha * 0.8})`);
+			gradient.addColorStop(1, `rgba(${hue}, 0)`);
+			
+			context.current.fillStyle = gradient;
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -180,11 +226,15 @@ export default function Particles({
 			const remapClosestEdge = parseFloat(
 				remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
 			);
+			
+			// Add twinkling effect - stars randomly change brightness
+			if (Math.random() > 0.995) {
+				circle.targetAlpha = parseFloat((Math.random() * 0.8 + 0.2).toFixed(1));
+			}
+			
 			if (remapClosestEdge > 1) {
-				circle.alpha += 0.02;
-				if (circle.alpha > circle.targetAlpha) {
-					circle.alpha = circle.targetAlpha;
-				}
+				// Smoother transition for twinkling
+				circle.alpha += (circle.targetAlpha - circle.alpha) * 0.01;
 			} else {
 				circle.alpha = circle.targetAlpha * remapClosestEdge;
 			}

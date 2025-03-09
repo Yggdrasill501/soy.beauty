@@ -16,6 +16,37 @@ const computedFields = {
 	},
 };
 
+export const Service = defineDocumentType(() => ({
+	name: "Service",
+	filePathPattern: "./sluzby/**/*.mdx",
+	contentType: "mdx",
+
+	fields: {
+		published: {
+			type: "boolean",
+		},
+		title: {
+			type: "string",
+			required: true,
+		},
+		description: {
+			type: "string",
+			required: true,
+		},
+		date: {
+			type: "date",
+		},
+		image: {
+			type: "string",
+		},
+		priority: {
+			type: "number",
+			default: 0,
+		},
+	},
+	computedFields,
+}));
+
 export const Project = defineDocumentType(() => ({
 	name: "Project",
 	filePathPattern: "./o-nas/**/*.mdx",
@@ -64,7 +95,7 @@ export const Page = defineDocumentType(() => ({
 
 export default makeSource({
 	contentDirPath: "./content",
-	documentTypes: [Page, Project],
+	documentTypes: [Page, Project, Service],
 	mdx: {
 		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
