@@ -45,7 +45,7 @@ export default async function ProjectsPage() {
           <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
             O nás
           </h2>
-          <p className="mt-4 text-zinc-400">
+          <p className="mt-4 text-zinc-300">
           Náš príbeh sa začal s jednoduchou víziou – vytvoriť priestor, kde každá žena objaví svoju jedinečnú krásu.
           </p> 
         </div>
@@ -67,7 +67,7 @@ export default async function ProjectsPage() {
                       <span>SOON</span>
                     )}
                   </div>
-                  <span className="flex items-center gap-1 text-xs text-zinc-500">
+                  <span className="flex items-center gap-1 text-xs text-zinc-400">
                     <Eye className="w-4 h-4" />{" "}
                     {Intl.NumberFormat("en-US", { notation: "compact" }).format(
                       views[featured.slug] ?? 0,
@@ -81,7 +81,7 @@ export default async function ProjectsPage() {
                 >
                   {featured.title}
                 </h2>
-                <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
+                <p className="mt-4 leading-8 duration-150 text-zinc-300 group-hover:text-zinc-100">
                   {featured.description}
                 </p>
                 <div className="absolute bottom-4 md:bottom-8">
