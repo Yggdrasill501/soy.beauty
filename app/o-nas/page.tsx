@@ -11,9 +11,9 @@ export default async function ProjectsPage() {
   // No longer tracking page views - using a typed empty record with default values
   const views: Record<string, number> = {};
 
-  const featured = allProjects.find((project) => project.slug === "unkey")!;
-  const top2 = allProjects.find((project) => project.slug === "planetfall")!;
-  const top3 = allProjects.find((project) => project.slug === "highstorm")!;
+  const featured = allProjects.find((project) => project.slug === "soybeauty")!;
+  const top2 = allProjects.find((project) => project.slug === "modernakrasa")!;
+  const top3 = allProjects.find((project) => project.slug === "moderneprocedury")!;
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(
