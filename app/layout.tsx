@@ -6,24 +6,24 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "soy.beauty",
+    default: "Soy beauty",
     template: "%s | soy.beauty",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Unikatny salon krásy.",
   openGraph: {
     title: "soy.beauty",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://soy.beauty",
+      "Unikatny salon krásy a relaxácie v Nitre.",
+    url: "https://soybeauty.sk",
     siteName: "soy.beauty",
     images: [
       {
-        url: "https://soy.beauty/og.png",
+        url: "https://soybeauty.sk/og.png",
         width: 1920,
         height: 1080,
       },
     ],
-    locale: "en-US",
+    locale: "sk-SK",
     type: "website",
   },
   robots: {
@@ -38,8 +38,10 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Soy beauty",
     card: "summary_large_image",
+    description: "Unikatny salon krásy a relaxácie v Nitre.",
+    creator: "@soybeauty",
   },
   icons: {
     shortcut: "/favicon.png",
